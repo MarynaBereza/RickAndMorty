@@ -9,12 +9,18 @@
 import Foundation
 
 struct EpisodeModel {
+    
+    enum Status: String, Decodable {
+        case alive = "Alive"
+        case dead = "Dead"
+        case unknown = "unknown"
+    }
+    
     let id: Int
     let name: String
-    let status: String
+    let status: Status
     let image: String
     let created: String
-    
     
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -32,7 +38,7 @@ extension EpisodeModel: Decodable {
         
         id = try values.decode(Int.self, forKey: .id)
         name = try values.decode(String.self, forKey: .name)
-        status = try values.decode(String.self, forKey: .status)
+        status = try values.decode(Status.self, forKey: .status)
         image = try values.decode(String.self, forKey: .image)
         created = try values.decode(String.self, forKey: .created)
     }

@@ -16,6 +16,7 @@
 		42D92BF525EE320200D05078 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D92BF325EE320200D05078 /* Cell.swift */; };
 		42D92BF625EE320200D05078 /* Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42D92BF425EE320200D05078 /* Cell.xib */; };
 		42D92BF825EE3C3E00D05078 /* EpisodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D92BF725EE3C3E00D05078 /* EpisodeModel.swift */; };
+		42D92BFC25EE3D5B00D05078 /* APIServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D92BFB25EE3D5B00D05078 /* APIServerManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		42D92BF325EE320200D05078 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		42D92BF425EE320200D05078 /* Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Cell.xib; sourceTree = "<group>"; };
 		42D92BF725EE3C3E00D05078 /* EpisodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeModel.swift; sourceTree = "<group>"; };
+		42D92BFB25EE3D5B00D05078 /* APIServerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServerManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,16 +66,25 @@
 			children = (
 				42D92BF325EE320200D05078 /* Cell.swift */,
 				42D92BF425EE320200D05078 /* Cell.xib */,
-				42D92BDF25EE2DF100D05078 /* AppDelegate.swift */,
-				42D92BE125EE2DF100D05078 /* SceneDelegate.swift */,
+				42D92BF725EE3C3E00D05078 /* EpisodeModel.swift */,
+				42D92BFB25EE3D5B00D05078 /* APIServerManager.swift */,
 				42D92BE325EE2DF100D05078 /* ViewController.swift */,
 				42D92BE525EE2DF100D05078 /* Main.storyboard */,
-				42D92BE825EE2DF200D05078 /* Assets.xcassets */,
-				42D92BEA25EE2DF200D05078 /* LaunchScreen.storyboard */,
 				42D92BED25EE2DF200D05078 /* Info.plist */,
-				42D92BF725EE3C3E00D05078 /* EpisodeModel.swift */,
+				42D92BFD25EE3DF900D05078 /* AppStart */,
 			);
 			path = RickAndMorty;
+			sourceTree = "<group>";
+		};
+		42D92BFD25EE3DF900D05078 /* AppStart */ = {
+			isa = PBXGroup;
+			children = (
+				42D92BEA25EE2DF200D05078 /* LaunchScreen.storyboard */,
+				42D92BE825EE2DF200D05078 /* Assets.xcassets */,
+				42D92BDF25EE2DF100D05078 /* AppDelegate.swift */,
+				42D92BE125EE2DF100D05078 /* SceneDelegate.swift */,
+			);
+			path = AppStart;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,6 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42D92BE425EE2DF100D05078 /* ViewController.swift in Sources */,
+				42D92BFC25EE3D5B00D05078 /* APIServerManager.swift in Sources */,
 				42D92BF525EE320200D05078 /* Cell.swift in Sources */,
 				42D92BE025EE2DF100D05078 /* AppDelegate.swift in Sources */,
 				42D92BE225EE2DF100D05078 /* SceneDelegate.swift in Sources */,
