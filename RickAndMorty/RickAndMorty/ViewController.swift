@@ -10,30 +10,30 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var episodesTableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
    
-    var episodes = [EpisodeModel]()
-    let cellIdentifier = "EpisodeCell"
-    let cellNibName = "Cell"
+    var characters = [CharacterModel]()
+    let cellIdentifier = "CharacterCell"
+    let cellNibName = "CharacterCell"
     let cellHeight: CGFloat = 140.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        episodesTableView.register(UINib(nibName: cellNibName, bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        tableView.register(UINib(nibName: cellNibName, bundle: nil), forCellReuseIdentifier: cellIdentifier)
         
         let episodesArray  = Array(1...20)
 
-        APIServerManager.episodesRequest(array: episodesArray) { [weak self](episodes) in
+        APIServerManager.getCharactes(array: episodesArray) { [weak self](characters) in
             guard let weakSelf = self else {
                 return
             }
-            weakSelf.episodes = episodes
-            weakSelf.episodesTableView.reloadData()
+            weakSelf.characters = characters
+            weakSelf.tableView.reloadData()
         }
     }
     
-    func getColorForStatus(status: EpisodeModel.Status) -> UIColor {
+    func getColorForStatus(status: CharacterModel.Status) -> UIColor {
         
         switch status {
         case .alive:
@@ -48,25 +48,25 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return episodes.count
+        return characters.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let episodeCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! Cell
+        let characterCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! CharacterCell
         
         
-        if !episodes.isEmpty {
+        if !characters.isEmpty {
             
-            let episode = episodes[indexPath.row]
-            let color = getColorForStatus(status: episode.status)
+            let character = characters[indexPath.row]
+            let color = getColorForStatus(status: character.status)
             
-            let model = Cell.ViewModel.init(statusColor: color,
-                                            episodeName: episode.name,
-                                            episodeStatus: episode.status.rawValue,
-                                            episodeImageURL: URL(string: episode.image) )
-            episodeCell.updateModel(model)
+            let model = CharacterCell.ViewModel.init(statusColor: color,
+                                                     name: character.name,
+                                                     status: character.status.rawValue,
+                                                     imageURL: URL(string: character.image) )
+            characterCell.updateModel(model)
         }
-        return episodeCell
+        return characterCell
     }
 }
 

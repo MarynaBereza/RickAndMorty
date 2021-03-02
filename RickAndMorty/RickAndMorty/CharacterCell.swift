@@ -8,13 +8,13 @@
 
 import UIKit
 
-class Cell: UITableViewCell {
+class CharacterCell: UITableViewCell {
     
     struct ViewModel {
         let statusColor: UIColor
-        let episodeName: String
-        let episodeStatus: String
-        let episodeImageURL: URL?
+        let name: String
+        let status: String
+        let imageURL: URL?
     }
 
     @IBOutlet private weak var episodeImageView: UIImageView!
@@ -25,18 +25,18 @@ class Cell: UITableViewCell {
     static var cachedImages = [URL:UIImage]()
 
     func updateModel(_ model: ViewModel) {
-        if let imageURL = model.episodeImageURL {
+        if let imageURL = model.imageURL {
             setImage(from: imageURL)
         }
         
-        episodeNameLabel.text = model.episodeName
-        episodeStatusLabel.text = model.episodeStatus
+        episodeNameLabel.text = model.name
+        episodeStatusLabel.text = model.status
         episodeStatusImageView.tintColor = model.statusColor
     }
     
     func setImage(from url: URL) {
         
-        if let image = Cell.cachedImages[url] {
+        if let image = CharacterCell.cachedImages[url] {
             self.episodeImageView.image = image
             return
         }
@@ -45,16 +45,12 @@ class Cell: UITableViewCell {
             
             guard let imageData = try? Data(contentsOf: url) else { return }
             let image = UIImage(data: imageData)
-            Cell.cachedImages[url] = image
+            CharacterCell.cachedImages[url] = image
             
             DispatchQueue.main.async {
                 self.episodeImageView.image = image
             }
         }
-    }
-
-    override func prepareForReuse() {
-        episodeImageView.image = UIImage(systemName: "sun.min")
     }
 }
 

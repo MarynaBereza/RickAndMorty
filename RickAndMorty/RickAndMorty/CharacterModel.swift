@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct EpisodeModel {
+struct CharacterModel {
     
     enum Status: String, Decodable {
         case alive = "Alive"
@@ -31,7 +31,7 @@ struct EpisodeModel {
     }
 }
 
-extension EpisodeModel: Decodable {
+extension CharacterModel: Decodable {
     init(from decoder: Decoder) throws  {
         
         let values = try decoder.container(keyedBy: CodingKeys.self)

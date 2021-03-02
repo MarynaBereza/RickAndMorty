@@ -10,7 +10,7 @@ import Foundation
 
 class APIServerManager {
     
-    static func episodesRequest(array: [Int], completion: @escaping(_ episodes: [EpisodeModel]) -> ()) {
+    static func getCharactes(array: [Int], completion: @escaping(_ episodes: [CharacterModel]) -> ()) {
 
         let srtArray = array.map{String($0)}
         let episodeIDs = srtArray.joined(separator: ",")
@@ -32,7 +32,7 @@ class APIServerManager {
                 print(error)
             } else {
                 
-                let episodeModels = try! JSONDecoder().decode([EpisodeModel].self, from: data)
+                let episodeModels = try! JSONDecoder().decode([CharacterModel].self, from: data)
                 
                 DispatchQueue.main.async {
                     
